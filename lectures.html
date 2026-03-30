@@ -4,3 +4,295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lectures - Soft Bioelectronics Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body.dark-mode {
+            color-scheme: dark;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .course-card {
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(26, 54, 93, 0.2);
+        }
+
+        .dark-mode .course-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-[#081320] transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="nav-sticky bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#0c1929] dark:text-[#22b8cf] hover:text-[#0d7ea0] transition-colors">
+                        SoBiLab
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Home</a>
+                    <a href="news.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">News</a>
+                    <a href="research.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Research</a>
+                    <a href="team.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Team</a>
+                    <a href="publication.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Publication</a>
+                    <a href="lectures.html" class="text-[#0c1929] dark:text-[#22b8cf] font-bold">Lectures</a>
+                    <a href="board.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Board</a>
+                    <a href="opening.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Opening</a>
+                    <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="news.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">News</a>
+                <a href="research.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Research</a>
+                <a href="team.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Team</a>
+                <a href="publication.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Publication</a>
+                <a href="lectures.html" class="block px-4 py-2 text-[#0c1929] dark:text-[#22b8cf] font-bold">Lectures</a>
+                <a href="board.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Board</a>
+                <a href="opening.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Opening</a>
+                <a href="index.html#contact" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-[#0c1929] to-[#0d7ea0] dark:from-[#081320] dark:to-[#153040] text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">Courses & Lectures</h1>
+            <p class="text-xl text-blue-100">Educational offerings in soft bioelectronics and related fields</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <!-- Course Introduction -->
+        <section class="mb-20">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700 mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    Educational Programs
+                </h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Prof. Jaehong Lee teaches courses spanning graduate and undergraduate levels at DGIST, covering soft materials and devices, semiconductor physics, and micro/nano engineering. Our courses combine theoretical foundations with practical knowledge to prepare students for careers in advanced materials and device research.
+                </p>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Course 1: Soft Materials and Devices -->
+                <div class="course-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="h-2 bg-gradient-to-r from-[#0c1929] to-[#0d7ea0]"></div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-[#0c1929] text-[#0c1929] dark:text-blue-200 rounded-full text-sm font-semibold">
+                                RT 659
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            Soft Materials and Devices
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            Graduate-level course covering the fundamentals and applications of soft materials in electronic devices. Topics include polymer-based electronics, flexible and stretchable device design, soft sensors, actuators, and biocompatible materials for wearable and implantable systems.
+                        </p>
+                        <div class="space-y-2 text-gray-700 dark:text-gray-300 text-sm mb-6">
+                            <p><i class="fas fa-clock text-[#0d7ea0] dark:text-[#22b8cf] mr-2"></i>3 Credits</p>
+                            <p><i class="fas fa-calendar text-[#0d7ea0] dark:text-[#22b8cf] mr-2"></i>Fall Semester</p>
+                            <p><i class="fas fa-user text-[#0d7ea0] dark:text-[#22b8cf] mr-2"></i>Graduate Level</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2: Introduction to Semiconductor Physics -->
+                <div class="course-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="h-2 bg-gradient-to-r from-green-600 to-green-500"></div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-200 rounded-full text-sm font-semibold">
+                                EE 304
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            Introduction to Semiconductor Physics
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            Undergraduate course covering the fundamental physics of semiconductor materials and devices. Topics include crystal structure, energy band theory, carrier transport, p-n junctions, MOSFETs, and optoelectronic devices, providing a solid foundation for advanced electronics studies.
+                        </p>
+                        <div class="space-y-2 text-gray-700 dark:text-gray-300 text-sm mb-6">
+                            <p><i class="fas fa-clock text-green-600 dark:text-green-400 mr-2"></i>3 Credits</p>
+                            <p><i class="fas fa-calendar text-green-600 dark:text-green-400 mr-2"></i>Spring Semester</p>
+                            <p><i class="fas fa-user text-green-600 dark:text-green-400 mr-2"></i>Undergraduate Level</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3: Micro/Nano Engineering -->
+                <div class="course-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="h-2 bg-gradient-to-r from-purple-600 to-purple-500"></div>
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-900 dark:text-purple-200 rounded-full text-sm font-semibold">
+                                MECH 402
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            Micro/Nano Engineering
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            Undergraduate course on the principles and applications of micro- and nano-scale engineering. Topics include microfabrication techniques, MEMS/NEMS devices, lithography, thin film processing, etching, and their applications in sensors, actuators, and biomedical devices.
+                        </p>
+                        <div class="space-y-2 text-gray-700 dark:text-gray-300 text-sm mb-6">
+                            <p><i class="fas fa-clock text-purple-600 dark:text-purple-400 mr-2"></i>3 Credits</p>
+                            <p><i class="fas fa-calendar text-purple-600 dark:text-purple-400 mr-2"></i>Spring Semester</p>
+                            <p><i class="fas fa-user text-purple-600 dark:text-purple-400 mr-2"></i>Undergraduate Level</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seminar Series -->
+        <section class="mt-24">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900 dark:text-white">
+                Weekly Paper Seminar
+            </h2>
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-[#0c1929] dark:to-[#153040] rounded-lg shadow-md p-8 border border-blue-200 dark:border-blue-700">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    <i class="fas fa-presentation mr-3 text-[#0d7ea0] dark:text-[#22b8cf]"></i>Weekly Paper Seminar
+                </h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    The lab organizes a weekly paper seminar featuring discussions of recent papers and advances in soft bioelectronics, flexible electronics, wearable sensors, soft robotics, and related fields. We analyze cutting-edge research from the literature and discuss implications for our ongoing work.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-3">
+                            <i class="fas fa-info-circle text-[#0d7ea0] dark:text-[#22b8cf] mr-2"></i>Schedule
+                        </h4>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            Every Thursday, 4:00 PM - 5:00 PM
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                            DGIST, Engineering Building, Seminar Room
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-3">
+                            <i class="fas fa-envelope text-[#0d7ea0] dark:text-[#22b8cf] mr-2"></i>Contact
+                        </h4>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            All students and faculty welcome!
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                            <a href="mailto:jaelee@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:underline">Email for details</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#081320] dark:bg-[#060e1a] text-white py-16 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#22b8cf]">SoBiLab</h3>
+                    <p class="text-gray-400">
+                        Soft Bioelectronics Lab at DGIST, advancing the frontier of wearable and implantable electronics
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Contact</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p>
+                            <i class="fas fa-envelope w-5 text-[#22b8cf]"></i>
+                            <a href="mailto:jaelee@dgist.ac.kr" class="hover:text-white transition-colors">jaelee@dgist.ac.kr</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone w-5 text-[#22b8cf]"></i>
+                            <a href="tel:+82537856228" class="hover:text-white transition-colors">+82 53 785 6228</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt w-5 text-[#22b8cf]"></i>
+                            Daegu, South Korea
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Prospective Students</h4>
+                    <p class="text-gray-400 mb-4">
+                        We are actively recruiting talented graduate and postdoctoral researchers.
+                    </p>
+                    <a href="opening.html" class="inline-block px-6 py-2 bg-[#0d7ea0] hover:bg-[#153040] transition-colors rounded font-semibold">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Soft Bioelectronics Lab, DGIST. All rights reserved.</p>
+                <p class="mt-2 text-sm">Daegu Institute of Science and Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            html.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
