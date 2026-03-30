@@ -1,27 +1,947 @@
-<title>News - Soft Bioelectronics Lab</title>    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - SoBiLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-      body.dark-mode {
-        color-scheme: dark;
-      }
+        :root {
+            --navy: #0c1929;
+            --cyan: #22b8cf;
+            --teal: #0d7ea0;
+            --emerald: #10b981;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --orange: #f97316;
+            --amber: #f59e0b;
+            --pink: #ec4899;
+        }
 
-      html {
-        scroll-behavior: smooth;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      .nav-sticky {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-      }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #fafafa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
 
-      .news-item {
-        transition: all 0.3s ease;
-        padding: 1rem;
-        border-radius: 0.5rem;
-      }
+        body.dark,
+        html.dark body {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
 
-      .news-item:hover {
-        background-color: rgba(49, 130, 206, 0.1);
-        transform: translateX(4px);
-      }
+        /* Filter Chips */
+        .filter-container {
+            padding: 2rem;
+            background: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        body.dark .filter-container {
+            background: #1f2937;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            white-space: nowrap;
+        }
+
+        .filter-chip {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #374151;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        body.dark .filter-chip {
+            background: #374151;
+            border-color: #4b5563;
+            color: #e5e7eb;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .filter-chip.active {
+            background: var(--cyan);
+            border-color: var(--cyan);
+            color: white;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            gap: 4rem;
+        }
+
+        /* Timeline (Left) */
+        .timeline-container {
+            width: 120px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-items {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            padding-right: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -34px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #d1d5db;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.dark .timeline-dot {
+            background: #1f2937;
+            border-color: #4b5563;
+        }
+
+        .timeline-item.active .timeline-dot {
+            background: var(--cyan);
+            border-color: var(--cyan);
+            width: 16px;
+            height: 16px;
+            right: -36px;
+            top: -2px;
+        }
+
+        .timeline-year {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .timeline-year {
+            color: #9ca3af;
+        }
+
+        .timeline-item.active .timeline-year {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        /* News Cards (Right) */
+        .cards-container {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .month-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2.5rem 0 2rem 0;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        body.dark .month-divider {
+            color: #6b7280;
+        }
+
+        .month-divider::before,
+        .month-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, #e5e7eb, transparent);
+        }
+
+        body.dark .month-divider::before,
+        body.dark .month-divider::after {
+            background: linear-gradient(to right, #374151, transparent);
+        }
+
+        .month-divider.first {
+            margin-top: 0;
+        }
+
+        .news-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            border-left: 4px solid #d1d5db;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        body.dark .news-card {
+            background: #374151;
+            border-left-color: #4b5563;
+        }
+
+        .news-card:hover {
+            border-left-width: 6px;
+            padding-left: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #f9fafb;
+        }
+
+        body.dark .news-card:hover {
+            background: #4b5563;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Category Colors */
+        .news-card.award { border-left-color: var(--emerald); }
+        .news-card.publication { border-left-color: var(--blue); }
+        .news-card.invited-talk { border-left-color: var(--purple); }
+        .news-card.event { border-left-color: var(--orange); }
+        .news-card.press { border-left-color: var(--amber); }
+        .news-card.grant { border-left-color: var(--teal); }
+        .news-card.welcome { border-left-color: var(--pink); }
+
+        /* Card Image */
+        .card-image {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        body.dark .card-image {
+            background: #1f2937;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Card Content */
+        .card-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .card-date {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        body.dark .card-date {
+            color: #9ca3af;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge-award { background: rgba(16, 185, 129, 0.1); color: var(--emerald); }
+        .badge-publication { background: rgba(59, 130, 246, 0.1); color: var(--blue); }
+        .badge-invited-talk { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+        .badge-event { background: rgba(249, 115, 22, 0.1); color: var(--orange); }
+        .badge-press { background: rgba(245, 158, 11, 0.1); color: var(--amber); }
+        .badge-grant { background: rgba(13, 126, 160, 0.1); color: var(--teal); }
+        .badge-welcome { background: rgba(236, 72, 153, 0.1); color: var(--pink); }
+
+        body.dark .badge-award { background: rgba(16, 185, 129, 0.2); }
+        body.dark .badge-publication { background: rgba(59, 130, 246, 0.2); }
+        body.dark .badge-invited-talk { background: rgba(139, 92, 246, 0.2); }
+        body.dark .badge-event { background: rgba(249, 115, 22, 0.2); }
+        body.dark .badge-press { background: rgba(245, 158, 11, 0.2); }
+        body.dark .badge-grant { background: rgba(13, 126, 160, 0.2); }
+        body.dark .badge-welcome { background: rgba(236, 72, 153, 0.2); }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        body.dark .card-title {
+            color: #f3f4f6;
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        body.dark .card-description {
+            color: #d1d5db;
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            border-left: 1px solid #e5e7eb;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+            overflow-y: auto;
+        }
+
+        body.dark .detail-panel {
+            background: #374151;
+            border-left-color: #4b5563;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .detail-panel.open {
+            transform: translateX(0);
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #6b7280;
+            transition: color 0.2s ease;
+            z-index: 10;
+        }
+
+        body.dark .detail-close {
+            color: #9ca3af;
+        }
+
+        .detail-close:hover {
+            color: var(--navy);
+        }
+
+        body.dark .detail-close:hover {
+            color: #f3f4f6;
+        }
+
+        .detail-header {
+            padding: 2rem 1.5rem 1rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        body.dark .detail-title {
+            color: #f3f4f6;
+        }
+
+        .detail-body {
+            padding: 1.5rem;
+        }
+
+        .detail-description {
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark .detail-description {
+            color: #d1d5db;
+        }
+
+        .detail-doi {
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        body.dark .detail-doi {
+            border-top-color: #4b5563;
+        }
+
+        .detail-doi-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark .detail-doi-label {
+            color: #9ca3af;
+        }
+
+        .detail-doi-link {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .detail-doi-link:hover {
+            color: var(--teal);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 40;
+        }
+
+        .overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-container {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .timeline-container {
+                position: relative;
+                top: auto;
+                width: 100%;
+                margin-bottom: -2rem;
+            }
+
+            .timeline-items {
+                flex-direction: row;
+                gap: 1.5rem;
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+
+            .timeline-item {
+                text-align: center;
+            }
+
+            .timeline-dot {
+                right: auto;
+                top: -24px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item.active .timeline-dot {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-line {
+                left: auto;
+                right: auto;
+                top: 0;
+                bottom: auto;
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right, var(--cyan), transparent);
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .filter-chips {
+                padding: 0 1rem;
+                gap: 0.5rem;
+            }
+
+            .news-card {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.25rem;
+            }
+
+            .card-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .detail-panel {
+                width: 100%;
+            }
+
+            .card-title {
+                font-size: 0.95rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for cards entering */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: slideInUp 0.5s ease forwards;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.05s; }
+        .news-card:nth-child(2) { animation-delay: 0.1s; }
+        .news-card:nth-child(3) { animation-delay: 0.15s; }
+        .news-card:nth-child(n+4) { animation-delay: 0.2s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md" style="position:sticky;top:0;z-index:100;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#0c1929] dark:text-[#22b8cf] hover:text-[#0d7ea0] transition-colors">SoBiLab</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Home</a>
+                    <a href="news.html" class="text-[#0c1929] dark:text-[#22b8cf] font-bold">News</a>
+                    <a href="research.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Research</a>
+                    <a href="team.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Team</a>
+                    <a href="publication.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Publication</a>
+                    <a href="lectures.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Lectures</a>
+                    <a href="board.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Board</a>
+                    <a href="opening.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Opening</a>
+                    <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"><i class="fas fa-moon"></i></button>
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="news.html" class="block px-4 py-2 text-[#0c1929] dark:text-[#22b8cf] font-bold">News</a>
+                <a href="research.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Research</a>
+                <a href="team.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Team</a>
+                <a href="publication.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Publication</a>
+                <a href="lectures.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Lectures</a>
+                <a href="board.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Board</a>
+                <a href="opening.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Opening</a>
+                <a href="index.html#contact" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-[#0c1929] to-[#0d7ea0] dark:from-[#081320] dark:to-[#153040] text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">News & Events</h1>
+            <p class="text-xl text-blue-100">Stay informed about our latest research, awards, and events</p>
+        </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-container">
+        <div class="filter-chips">
+            <div class="filter-chip active" data-filter="all">All</div>
+            <div class="filter-chip" data-filter="award">Awards</div>
+            <div class="filter-chip" data-filter="publication">Publications</div>
+            <div class="filter-chip" data-filter="invited-talk">Invited Talks</div>
+            <div class="filter-chip" data-filter="event">Events</div>
+            <div class="filter-chip" data-filter="press">Press</div>
+            <div class="filter-chip" data-filter="grant">Grants</div>
+            <div class="filter-chip" data-filter="welcome">Welcome</div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+        <!-- Timeline (Left) -->
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-items" id="timeline"></div>
+        </div>
+
+        <!-- Cards (Right) -->
+        <div class="cards-container" id="cardsContainer"></div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="overlay" id="overlay"></div>
+    <div class="detail-panel" id="detailPanel">
+        <button class="detail-close" id="closeDetail">×</button>
+        <div class="detail-header">
+            <img id="detailImage" class="detail-image" src="" alt="">
+        </div>
+        <div class="detail-body">
+            <div class="detail-meta" id="detailMeta"></div>
+            <h2 class="detail-title" id="detailTitle"></h2>
+            <p class="detail-description" id="detailDescription"></p>
+            <div id="detailDoi" class="detail-doi" style="display: none;">
+                <div class="detail-doi-label">DOI</div>
+                <a id="detailDoiLink" class="detail-doi-link" href="" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const newsData = [
+            { date: "Nov. 3, 2025", year: 2025, category: "Visiting", categoryClass: "event", title: "Visiting the University of Calgary", description: "Prof. Jaehong Lee and two students, Hwajoong and Jinho, visited the University of Calgary in Canada to collaborate with the Human Performance Lab (led by Prof. Walter Herzog) as part of our ongoing international partnership. We conducted a high-quality animal experiment, as well as thorough ex vivo and bench-top tests. It was a wonderful experience to explore the excellent research facilities and to work together with outstanding researchers!", image: "https://static.wixstatic.com/media/56a777_d2ac7131743944e787f6197ff32cdc9b~mv2.jpg", doi: null },
+            { date: "Oct. 30, 2025", year: 2025, category: "Award", categoryClass: "award", title: "The Sponsored Poster Award in KIM", description: "The study received the Advanced Materials Sponsored Poster Award at the 2025 Korean Institute of Metals and Materials (KIM) conference. In recognition of its excellence, the work was also invited for submission to Advanced Materials (IF = 26.8, top 2.3% in the field), a leading journal in materials science. (First author: Jinho Kim, integrated MS/PhD program)", image: "https://static.wixstatic.com/media/56a777_5269abb8e7f74245964f4f51dd8a6668~mv2.png", doi: null },
+            { date: "Oct. 30, 2025", year: 2025, category: "Invited Talk", categoryClass: "invited-talk", title: "Invited Talk in the Korean Institute of Metals and Materials 2025", description: "Prof. Lee delivered an invited talk at the Korean Institute of Metals and Materials 2025 conference held in Gwangju, Korea. His presentation focused on biocompatible and biodegradable fiber electronic sensors for healthcare applications.", image: "https://static.wixstatic.com/media/56a777_5402ce5c2aad468ead3ad704fbb091f0~mv2.jpg", doi: null },
+            { date: "Oct. 23, 2025", year: 2025, category: "Invited Talk", categoryClass: "invited-talk", title: "Invited Talk in the Korean Sensors Society 2025", description: "Prof. Lee delivered an invited talk at the Korean Sensors Society 2025 conference held in Yeosu, Korea. His presentation focused on electronic suture for biomechanical applications.", image: "https://static.wixstatic.com/media/56a777_32bce7282be44d1cac18dfad673123ec~mv2.jpg", doi: null },
+            { date: "Sep. 18, 2025", year: 2025, category: "Invited Talk", categoryClass: "invited-talk", title: "Invited Talk in Materials Oceania 2025", description: "Prof. Lee delivered an invited talk at the Materials Oceania 2025 conference held in Seoul, Korea. His presentation focused on electronic device for biomechanical applications.", image: "https://static.wixstatic.com/media/56a777_9ed720c7f199435aa7e0e33c7e544faf~mv2.jpg", doi: null },
+            { date: "Sep. 04, 2025", year: 2025, category: "Award", categoryClass: "award", title: "DGIST Award for Excellence in Research", description: "In recognition of outstanding research achievements and scholarly contributions, Prof. Lee was honored with the DGIST Award for Excellence in Research (DGIST 2025 우수학술상).", image: "https://static.wixstatic.com/media/56a777_be9feab82d7f41e98dbfbb5364409709~mv2.jpeg", doi: null },
+            { date: "Aug. 09, 2025", year: 2025, category: "Publication", categoryClass: "publication", title: "Paper Published in npj Flexible Electronics", description: "The paper \"Advances and perspectives in fiber-based electronic devices for next-generation soft systems\" has been published in npj Flexible Electronics (Impact factor: 15.5). Six SoBiLab graduate students participated in this review paper. (First authors: Hwajoong Kim, Daehyun Kim)", image: "https://static.wixstatic.com/media/56a777_a5e96790a5804f6c86aab0f0f42d713e~mv2.jpg", doi: "10.1038/s41528-025-00465-w" },
+            { date: "Jun. 16, 2025", year: 2025, category: "Invited Talk", categoryClass: "invited-talk", title: "Invited Talk in NanoSeries 2025", description: "Prof. Lee delivered an invited talk at the NanoSeries 2025 conference held in Valencia, Spain. His presentation focused on electronic suture technologies for implantable and biomedical applications.", image: "https://static.wixstatic.com/media/56a777_766b467e0fd7480cb4a4352a80b35463~mv2.jpg", doi: null },
+            { date: "Apr. 3, 2025", year: 2025, category: "Award", categoryClass: "award", title: "The Best Poster Award in Korean Sensors Society for Jinho", description: "During the Korean Sensors Society held between Apr 1–3rd, Jinho has won the best poster award for his presentation titled: \"Bioresorbable and Negatively Responsive Fiber-Based Strain Sensing System for Wireless Implantable Electronics\". Congratulations!", image: "https://static.wixstatic.com/media/56a777_ce6780f10ee54493854b8fb41c1b717d~mv2.jpg", doi: null },
+            { date: "Mar. 28, 2025", year: 2025, category: "Award", categoryClass: "award", title: "The Best Oral Presentation Award in KMEMS for Jinho", description: "During the Korean MEMS held between March 26–28th, Jinho has won the best oral presentation award for his presentation titled: \"Negatively Responsive and Biodegradable Fiber Strain Sensing System for Real-time Monitoring of Biomechanical Signals\". Congratulations!", image: "https://static.wixstatic.com/media/56a777_ad523f0cac7d42be8bd1fa756195bc35~mv2.png", doi: null },
+            { date: "Jan. 13, 2025", year: 2025, category: "Publication", categoryClass: "publication", title: "Paper Published in ACS Sensors", description: "The paper \"Smart Bioelectronic Nanomesh Face Masks with Permeability and Flexibility for Monitoring Cortisol in Saliva\" has been published in ACS Sensors (Impact factor: 8.3).", image: "https://static.wixstatic.com/media/56a777_57dd95b85ef1465bb75c7703c2bb0035~mv2.jpg", doi: "10.1021/acssensors.4c01531" },
+            { date: "Oct. 18, 2024", year: 2024, category: "Award", categoryClass: "award", title: "Manrye Foundation Prize for Mugeun Lee", description: "The research project titled \"Postoperative Long-Term Monitoring of Mechanical Characteristics in Reconstructed Soft Tissues Using Biocompatible, Immune-Tolerant, and Wireless Electronic Sutures,\" conducted in collaboration with the team from Korea University's College of Medicine, received the Manrye Foundation Award at the Korean Orthopedic Association conference. Congratulations!", image: "https://static.wixstatic.com/media/56a777_ebe8d8b434024f20aa5d040a16138522~mv2.jpg", doi: null },
+            { date: "Oct. 18, 2024", year: 2024, category: "Award", categoryClass: "award", title: "Young Scientist Award for Prof. Jaehong Lee", description: "Congratulations to Professor Jaehong Lee for being selected as an \"Outstanding Young Scientist\" at the 2024 Fall Academic Conference of the Korean Society of Flexible and Printed Electronics, held from October 16 to 18.", image: "https://static.wixstatic.com/media/56a777_4250bd49b7774904b785f654326da6b3~mv2.jpg", doi: null },
+            { date: "Oct. 16, 2024", year: 2024, category: "Press", categoryClass: "press", title: "The Research Achievements in Catheter Monitoring System Have Been Highlighted in the Korean Press", description: "At COEX in Seoul, a presentation was held on a sensing system capable of real-time monitoring of catheter fixation status, as part of the 'Joint Tech Market of Four Leading Institutes in Science and Technology'. This research has been featured in numerous media outlets including Money Today and Nate!", image: "https://static.wixstatic.com/media/56a777_92b2bde499df4477b2fc366c9af71007~mv2.jpg", doi: null },
+            { date: "Oct. 01, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "The Paper Has Been Selected as a Front Cover in Advanced Functional Materials", description: "Our paper recently published in Advanced Functional Materials (\"Bioelectronic Sutures with Electrochemical pH-Sensing for Long-Term Monitoring of the Wound Healing Progress\") has been featured as a front cover image of the journal.", image: "https://static.wixstatic.com/media/56a777_c94830be5c5a446a8f0b48c84b52cb34~mv2.jpg", doi: null },
+            { date: "Jul. 30, 2024", year: 2024, category: "Press", categoryClass: "press", title: "The Paper in Advanced Functional Materials Has Been Highlighted in Korean Press", description: "Our paper recently published in Advanced Functional Materials has been highlighted in 13 Korean press including YTN, Herald etc.", image: "https://static.wixstatic.com/media/56a777_5064578a9e424aaabd7e1b37cf4acf54~mv2.jpg", doi: null },
+            { date: "Jul. 16, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "Paper Published in Advanced Functional Materials", description: "The paper \"Bioelectronic Sutures with Electrochemical pH-Sensing for Long-Term Monitoring of the Wound Healing Progress\" has been published in Advanced Functional Materials (Impact factor: 18.5). (First author: Hwajoong Kim)", image: "https://static.wixstatic.com/media/56a777_6a562585182e44a1a156e6f30ad3e355~mv2.jpg", doi: "10.1002/adfm.202402501" },
+            { date: "Jun. 28, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "Paper Published in Advanced Functional Materials", description: "The paper \"Progresses and Perspectives of 1D Soft Sensing Devices for Healthcare Applications\" has been published in Advanced Functional Materials (Impact factor: 19). (First authors: Jinho Kim, Hwajoong Kim)", image: "https://static.wixstatic.com/media/56a777_afe8665f03674c799db610ff8956abd4~mv2.jpg", doi: "10.1002/adfm.202406651" },
+            { date: "Jun. 27, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "The Paper Has Been Selected as an Inside Back Cover in Small", description: "Our paper recently published in Small (\"High Performance Proprioceptive Fiber Actuators Based on Ag Nanoparticles-Incorporated Hybrid Twisted and Coiled System\") has been featured as an inside back cover image of the journal.", image: "https://static.wixstatic.com/media/56a777_22b3aaa5f935468ea7b579ec3797e095~mv2.jpg", doi: null },
+            { date: "May. 20, 2024", year: 2024, category: "Press", categoryClass: "press", title: "The Paper in ACS Nano Has Been Highlighted in Korean Press", description: "Our paper recently published in ACS Nano has been highlighted in 12 Korean press including Maeil, Herald etc.", image: "https://static.wixstatic.com/media/56a777_946dbd4d95de4daa9eb31d88b40dd601~mv2.jpg", doi: null },
+            { date: "May. 14, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "The Paper Has Been Selected as a Supplementary Cover in ACS Nano", description: "Our paper recently published in ACS Nano (\"Postoperative Long-Term Monitoring of Mechanical Characteristics in Reconstructed Soft Tissues Using Biocompatible, Immune-Tolerant and Wireless Electronic Sutures\") has been featured as a supplementary cover image of the journal.", image: "https://static.wixstatic.com/media/56a777_2e7d0efaa2804c08b48e1231a3722843~mv2.png", doi: null },
+            { date: "May. 03, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "Paper Published in ACS Nano", description: "The paper \"Postoperative Long-Term Monitoring of Mechanical Characteristics in Reconstructed Soft Tissues Using Biocompatible, Immune-Tolerant, and Wireless Electronic Sutures\" has been published in ACS Nano (Impact factor: 17.1). (First author: Mugeun Lee)", image: "https://static.wixstatic.com/media/56a777_3aa042003d1a449f9b1b179905c54353~mv2.jpg", doi: "10.1021/acsnano.4c00396" },
+            { date: "Mar. 29, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "Paper Published in Small", description: "The paper \"High Performance Proprioceptive Fiber Actuators Based on Ag Nanoparticles-Incorporated Hybrid Twisted and Coiled System\" has been published in Small (Impact factor: 13.3). (First authors: Seungbeom Noh, Jinho Kim)", image: "https://static.wixstatic.com/media/56a777_31ef78e5f6c0439ba6d9b3ac9eecc47c~mv2.jpg", doi: "10.1002/smll.202309429" },
+            { date: "Mar. 07, 2024", year: 2024, category: "Publication", categoryClass: "publication", title: "Paper Published in npj Flexible Electronics", description: "The paper \"Inherently integrated microfiber-based flexible proprioceptive sensor for feedback-controlled soft actuators\" has been published in npj Flexible Electronics (Impact factor: 14.6). (First author: Hwajoong Kim)", image: "https://static.wixstatic.com/media/56a777_77867c6c2e014edba2252e43b24c4677~mv2.jpg", doi: "10.1038/s41528-024-00302-6" },
+            { date: "Dec. 12, 2023", year: 2023, category: "Publication", categoryClass: "publication", title: "Paper Published in Advanced Electronic Materials", description: "The paper \"Fiber-Based Flexible Ionic Diode with High Robustness and Rectifying Performance: Toward Electronic Textile Circuits\" has been published in Advanced Electronic Materials (Impact factor: 6.2). (First author: Seohyun Woo)", image: "https://static.wixstatic.com/media/56a777_7cb7a1af9d664eeab6d196ad00d446d9~mv2.png", doi: "10.1002/aelm.202300653" },
+            { date: "Oct. 27, 2023", year: 2023, category: "Award", categoryClass: "award", title: "Paper Award in the Korean Fiber Society for Minji", description: "During the Korean Fiber Society held between October 25–27th, Minji has won the paper award for her paper titled: \"Electrochemical pH Sensing Sutures for Real-Time Wound Monitoring\". Congratulations!", image: "https://static.wixstatic.com/media/56a777_c17391849c0c42ccaf6b610196ce5030~mv2.png", doi: null },
+            { date: "Oct. 27, 2023", year: 2023, category: "Award", categoryClass: "award", title: "Best Paper Award in the Korean Fiber Society for Jinho", description: "During the Korean Fiber Society held between October 25–27th, Jinho has won the best paper award for his paper titled: \"Biodegradable strain sensing suture with negatively responsive measurement of biomechanical strain signal in real-time\". Congratulations!", image: "https://static.wixstatic.com/media/56a777_1963c4f5d87d4175b6f2f3db6cafe9ed~mv2.jpg", doi: null },
+            { date: "Oct. 13, 2023", year: 2023, category: "Award", categoryClass: "award", title: "Best Poster Presentation Award in the Korean Sensor Society for Jinho", description: "During the Korean Sensors Society held between October 11–13th, Jinho has won the best poster presentation award for his poster titled: \"Biodegradable Negatively Responsive Fiber Strain Sensor for Continuous Monitoring of Biomechanical Strain Signal\". Congratulations!", image: "https://static.wixstatic.com/media/56a777_1f254fca43d64662ba0f6874703b0007~mv2.jpg", doi: null },
+            { date: "Aug. 22, 2023", year: 2023, category: "Grant", categoryClass: "grant", title: "Research Fund Granted", description: "Prof. Jaehong Lee and Jinho Kim (MS & Ph.D. candidate) are selected for the support project for the next generation (Basic Science Research Program) as the research topic of \"Development of Biodegradable wireless Inflammatory Detective Electronic Suture\" and we will get 40 million KRW for 2 years from the fund.", image: "https://static.wixstatic.com/media/56a777_56d3ad06d11a41ce987e117b4fce42bb~mv2.jpg", doi: null },
+            { date: "May. 26, 2023", year: 2023, category: "Publication", categoryClass: "publication", title: "The Paper Has Been Featured as a Cover Paper in Advanced Science!", description: "Our paper recently published in Advanced Science (\"Surface-embedding of Mo microparticles for robust and conductive biodegradable fiber electrodes: Toward 1D flexible transient electronics\") has been featured as a front cover image of the journal.", image: "https://static.wixstatic.com/media/6f294c_749397143c0e423babf95667b06d4adb~mv2.png", doi: null },
+            { date: "May. 17, 2023", year: 2023, category: "Award", categoryClass: "award", title: "Best Poster Presentation Award in IEEE NEMS for Seungbeom", description: "During IEEE NEMS 2023 held between May 14–17th, Seungbeom has won the best poster presentation award for his poster titled: \"Piezoresistive Strain Sensing Twisted and Coiled Fiber Actuator for Wearable Robotics\". Congratulations!", image: "https://static.wixstatic.com/media/6f294c_658f877e1c5b43c5aaa6e5b2a443576a~mv2.jpg", doi: null },
+            { date: "Apr. 27, 2023", year: 2023, category: "Grant", categoryClass: "grant", title: "Research Fund Granted", description: "Our team has been selected for Korean Medical Devices Development Fund with the title \"Rehabilitation Enhancement using Lubricated Immune Evasive Functional Electronic Suture (RELIEF E-Suture)\". Our team will get 270 million KRW for 3 years from the fund.", image: "https://static.wixstatic.com/media/6f294c_67711ee0137f4b5cbe5c52cf362292cb~mv2.jpg", doi: null },
+            { date: "Mar. 30, 2023", year: 2023, category: "Publication", categoryClass: "publication", title: "Paper Published in Advanced Science", description: "The paper \"Surface-embedding of Mo microparticles for robust and conductive biodegradable fiber electrodes: Toward 1D flexible transient electronics\" has been published in Advanced Science (Impact factor: 17.521). (First author: Jinho Kim)", image: "https://static.wixstatic.com/media/6f294c_640261da480e493c811cd928ca0be9cc~mv2.jpg", doi: "10.1002/advs.202206186" },
+            { date: "Mar. 30, 2023", year: 2023, category: "Award", categoryClass: "award", title: "The Prizes of Poster in the Korean Sensors Society for Minji", description: "During the Korean Sensors Society held between March 29–30th, Minji has won the best poster presentation award for her poster titled: \"Potentiometric pH Sensing Sutures\". Congratulations!", image: "https://static.wixstatic.com/media/6f294c_58605b11cd6b458db8a15746d218c821~mv2.png", doi: null },
+            { date: "Feb. 13, 2023", year: 2023, category: "Grant", categoryClass: "grant", title: "Selected as an Outstanding Project", description: "One of our research project \"Rehabilitation Enhancement using Lubricated Immune Evasive Functional Electronic Suture (RELIEF E-Suture)\" supported by NRF has been selected as an 'outstanding' research project.", image: "https://static.wixstatic.com/media/6f294c_1bd369e5c7e84280bcf444b510bbb06d~mv2.jpg", doi: null },
+            { date: "Nov. 10, 2022", year: 2022, category: "Award", categoryClass: "award", title: "The Prizes of Poster in DGIF 2022 for Seohyun, Seonggyu, and Mugeun", description: "During the 2022 DGIF held between November 9–10th, Seohyun, Seonggyu, and Mugeun have won the poster prizes for their posters. Congratulations!", image: "https://static.wixstatic.com/media/6f294c_3811f43b019d4f4ca3b779c5697248a8~mv2.jpg", doi: null },
+            { date: "Oct. 28, 2022", year: 2022, category: "Award", categoryClass: "award", title: "The Best Poster Prize Award for Hyeji", description: "During the 2022 KIM fall held between October 26–28th, Hyeji has won the best poster prize for her poster titled: 'Wearable and Flexible Immunosensor Based on Conductive Fiber for Anti-Mullerian Hormone Monitoring'. Congratulations!", image: "https://static.wixstatic.com/media/6f294c_1e5162b1c33e453d802c6025f4871c2f~mv2.jpg", doi: null },
+            { date: "Oct. 14, 2022", year: 2022, category: "Award", categoryClass: "award", title: "Best Poster Award for Seonggyu", description: "During the 12th International conference of flexible and printed electronics held between October 11–14th, Seonggyu has won the best poster award for his poster titled: \"High density multi-channel wearable textile electrode array with deep learning for EMG-based human-machine interaction\". Congratulations!", image: "https://static.wixstatic.com/media/6f294c_1d0a652aa2fc41e3b2f4d7438ffb858c~mv2.jpg", doi: null },
+            { date: "Jun. 27, 2022", year: 2022, category: "Welcome", categoryClass: "welcome", title: "New Members Join Our Group", description: "New members, Hojune Lee, Sebeen Lee, Chansu Jung, have joined our group as undergraduate research interns. Welcome!", image: "https://static.wixstatic.com/media/6f294c_fee321f0835b4b5488e14c7465582558~mv2.jpg", doi: null },
+            { date: "May. 26, 2022", year: 2022, category: "Grant", categoryClass: "grant", title: "Research Fund Granted (BRL)", description: "The consortium that our team is involved has been selected for Basic Research Laboratory (BRL) from National Research Foundation of Korea. Our group will be supported (~350 million KRW for 3 years) for development of wearable sensing network system.", image: "https://static.wixstatic.com/media/a0b41f_4e2a7df3b3f8443e86aed4bdd353feba~mv2.png", doi: null },
+            { date: "May. 2, 2022", year: 2022, category: "Grant", categoryClass: "grant", title: "Research Fund Granted (Robot Industry)", description: "The consortium that our team is included will be supported (~1.1 billion KRW over the next 4 years) by Ministry of Trade, Industry and Energy for performing the Robot Industry Technology Development Project. Our group will develop soft sensors for robotic hands.", image: "https://static.wixstatic.com/media/a0b41f_198c59554b2c4edfbdba79c693c6303f~mv2.png", doi: null },
+            { date: "May. 2, 2022", year: 2022, category: "Grant", categoryClass: "grant", title: "Research Fund Granted (Electroceuticals)", description: "Our team has been selected for the Bio&Medical Technology Development Program (Electroceuticals Development Project) funded by NRF. Our group will receive ~500 million KRW for the upcoming 3 years from the project.", image: "https://static.wixstatic.com/media/a0b41f_695b866eae8c498ca396d6a61aca86b5~mv2.png", doi: null },
+            { date: "Apr. 29, 2022", year: 2022, category: "Award", categoryClass: "award", title: "The Best Oral Presentation Award for Mugeun", description: "During the 2022 Spring Conference of the Korean Institute of Metals and Materials held between April 27–29th, Mugeun has won the best oral presentation award for his presentation titled: \"Au-Based Biocompatible and Implantable Electronic Suture for Wireless Biomechanical Strain Sensing\". Congratulations!", image: "https://static.wixstatic.com/media/6f294c_924ea36530274035a9d0cb547daae355~mv2.jpg", doi: null },
+            { date: "Apr. 8, 2022", year: 2022, category: "Award", categoryClass: "award", title: "Best Oral Presentation Award for Hwajoong", description: "During the 24th Korean MEMS Conference 2022 held between April 6–8th, Hwajoong has won the best oral presentation award for his presentation titled: 'Self-Sensing Fiber-Reinforced Soft Actuator for Closed-Loop Feedback Control'. Congratulations!", image: "https://static.wixstatic.com/media/6f294c_7b0d65c1b04c4b4d93a56dd5ebbcce45~mv2.jpg", doi: null },
+            { date: "Apr. 7, 2022", year: 2022, category: "Award", categoryClass: "award", title: "Outstanding Poster Award for Mugeun", description: "During 2022 The Korean Sensors Society Spring meeting held between April 6–7th, Mugeun has won the outstanding poster award for his poster presentation titled: 'Biocompatible and Implantable Electronic Suture for Wireless Strain Sensing'.", image: "https://static.wixstatic.com/media/6f294c_ff9e97820209413ebce63d06e209f213~mv2.jpg", doi: null },
+            { date: "Mar. 14, 2022", year: 2022, category: "Welcome", categoryClass: "welcome", title: "New Member Joins", description: "New member, Saeru Cheon, has joined our group as undergraduate research interns. Welcome!", image: "https://static.wixstatic.com/media/a0b41f_ff5a1081d523457b9ca7079a4aefe818~mv2.jpg", doi: null },
+            { date: "Mar. 8, 2022", year: 2022, category: "Publication", categoryClass: "publication", title: "Our Paper Has Been Featured as One of the Most Popular Articles in 2021!", description: "Our paper \"A multifunctional electronic suture for continuous strain monitoring and on-demand drug release\" (First author: Hwajoong Kim) has been featured as one of the most popular Nanoscale articles in 2021.", image: "https://static.wixstatic.com/media/a0b41f_9919142f17014105b8fcf39fc5f0bcf5~mv2.jpg", doi: null },
+            { date: "Feb. 28, 2022", year: 2022, category: "Welcome", categoryClass: "welcome", title: "New Member Joins", description: "New member, Minji Jeong, has joined our group as a M.S. student. She will work on multifunctional electronic sutures. Welcome!", image: "https://static.wixstatic.com/media/a0b41f_c3263ae5030b45c8b37d6e58acccd094~mv2.png", doi: null },
+            { date: "Dec. 27, 2021", year: 2021, category: "Welcome", categoryClass: "welcome", title: "New Member Joins", description: "New member, Seohyun Woo, has joined our group as undergraduate research interns via the winter-school program. She will study an implantable mechanical sensor. Welcome!", image: "https://static.wixstatic.com/media/a0b41f_795147fc82c946c5b7db412e3f54f54d~mv2.png", doi: null },
+            { date: "Nov. 12, 2021", year: 2021, category: "Award", categoryClass: "award", title: "Silver Poster Prize Award for Seonggyu", description: "During the ICAE 2021 (6th International Conference on Advanced Electromaterials 2021) held between November 9–12th, Seonggyu has won a silver prize for his poster titled: 'Textile-Based Wearable EMG Electrodes with Machine Learning for High-Accuracy Hand Gesture Recognition'.", image: "https://static.wixstatic.com/media/a0b41f_f754aa1a49754e36a018309b1635de1e~mv2.png", doi: null },
+        ];
+
+        let currentFilter = 'all';
+
+        function getMonthYear(dateStr) {
+            const date = new Date(dateStr.replace('.\s', ' '));
+            return { month: date.getMonth(), year: date.getFullYear(), monthStr: date.toLocaleString('en-US', { month: 'short', year: 'numeric' }) };
+        }
+
+        function renderTimeline() {
+            const years = [...new Set(newsData.map(item => item.year))].sort((a, b) => b - a);
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = years.map(year =>
+                `<div class="timeline-item" data-year="${year}">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">${year}</div>
+                </div>`
+            ).join('');
+
+            timeline.querySelectorAll('.timeline-item').forEach(item => {
+                item.addEventListener('click', () => filterByYear(item.dataset.year));
+            });
+        }
+
+        function filterByYear(year) {
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.year == year);
+            });
+        }
+
+        function renderCards() {
+            let filteredData = newsData;
+            if (currentFilter !== 'all') {
+                filteredData = newsData.filter(item => item.categoryClass === currentFilter);
+            }
+
+            const cardsContainer = document.getElementById('cardsContainer');
+            let html = '';
+            let lastMonthYear = null;
+
+            filteredData.forEach(item => {
+                const { monthStr } = getMonthYear(item.date);
+                if (monthStr !== lastMonthYear) {
+                    html += `<div class="month-divider ${lastMonthYear === null ? 'first' : ''}">${monthStr}</div>`;
+                    lastMonthYear = monthStr;
+                }
+
+                html += `
+                    <div class="news-card ${item.categoryClass}" onclick="openDetail(this)">
+                        <div class="card-image">
+                            <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/120'">
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <div class="card-meta">
+                                    <span class="card-date">${item.date}</span>
+                                    <span class="category-badge badge-${item.categoryClass}">${item.category}</span>
+                                </div>
+                                <h3 class="card-title">${item.title}</h3>
+                                <p class="card-description">${item.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cardsContainer.innerHTML = html;
+        }
+
+        function openDetail(cardElement) {
+            const title = cardElement.querySelector('.card-title').textContent;
+            const date = cardElement.querySelector('.card-date').textContent;
+            const category = cardElement.querySelector('.category-badge').textContent;
+            const categoryClass = [...cardElement.classList].find(c => ['award', 'publication', 'invited-talk', 'event', 'press', 'grant', 'welcome'].includes(c));
+            const image = cardElement.querySelector('.card-image img').src;
+            const description = cardElement.querySelector('.card-description').textContent;
+
+            const item = newsData.find(n => n.title === title);
+            const doi = item?.doi;
+
+            document.getElementById('detailTitle').textContent = title;
+            document.getElementById('detailImage').src = image;
+            document.getElementById('detailDescription').textContent = description;
+
+            const metaHtml = `
+                <span class="card-date">${date}</span>
+                <span class="category-badge badge-${categoryClass}">${category}</span>
+            `;
+            document.getElementById('detailMeta').innerHTML = metaHtml;
+
+            if (doi) {
+                document.getElementById('detailDoi').style.display = 'block';
+                document.getElementById('detailDoiLink').textContent = 'https://doi.org/' + doi;
+                document.getElementById('detailDoiLink').href = 'https://doi.org/' + doi;
+            } else {
+                document.getElementById('detailDoi').style.display = 'none';
+            }
+
+            document.getElementById('detailPanel').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetail() {
+            document.getElementById('detailPanel').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('closeDetail').addEventListener('click', closeDetail);
+        document.getElementById('overlay').addEventListener('click', closeDetail);
+
+        // Filter chips
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                currentFilter = chip.dataset.filter;
+                renderCards();
+                document.querySelectorAll('.timeline-item').forEach(item => item.classList.remove('active'));
+            });
+        });
+
+        // Dark mode toggle (site-standard: localStorage-based, html.dark class)
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const htmlEl = document.documentElement;
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            htmlEl.classList.add('dark');
+            document.body.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        darkModeToggle.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            document.body.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Mobile menu
+        document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => { document.getElementById('mobileMenu').classList.add('hidden'); });
+        });
+
+        // Initialize
+        renderTimeline();
+        renderCards();
+        filterByYear(2025);
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-[#081320] dark:bg-[#060e1a] text-white py-16 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#22b8cf]">SoBiLab</h3>
+                    <p class="text-gray-400">Soft Bioelectronics Lab at DGIST, advancing the frontier of wearable and implantable electronics</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Contact</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p><i class="fas fa-envelope w-5 text-[#22b8cf]"></i> <a href="mailto:jaelee@dgist.ac.kr" class="hover:text-white transition-colors">jaelee@dgist.ac.kr</a></p>
+                        <p><i class="fas fa-phone w-5 text-[#22b8cf]"></i> <a href="tel:+82537856228" class="hover:text-white transition-colors">+82 53 785 6228</a></p>
+                        <p><i class="fas fa-map-marker-alt w-5 text-[#22b8cf]"></i> Daegu, South Korea</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Prospective Students</h4>
+                    <p class="text-gray-400 mb-4">We are actively recruiting talented graduate and postdoctoral researchers.</p>
+                    <a href="opening.html" class="inline-block px-6 py-2 bg-[#0d7ea0] hover:bg-[#153040] transition-colors rounded font-semibold">Learn More</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Soft Bioelectronics Lab, DGIST. All rights reserved.</p>
+                <p class="mt-2 text-sm">Daegu Institute of Science and Technology</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

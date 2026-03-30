@@ -1,12 +1,549 @@
- CAH∞œT&x ELTE GLOBAL CONTEXT" ‚Ä¥F∞òWE00" lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Soft Bioelectronics Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body.dark-mode {
+            color-scheme: dark;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .member-card {
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d7ea0, #0c1929);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1rem;
+        }
+
+        .dark-mode .avatar {
+            background: linear-gradient(135deg, #22b8cf, #0f2340);
+        }
+    </style>
 </head>
-<button type="button" class="button bg-purple-100 text-purple-900⁄]èê⁄]⁄]\»õ›œÿù]€èÇèŸ]èÇè€ò]èÇà‹ŸX›[€èÇààïMTî—TœV◊H’MìTœV◊HTêêTíQTœV»ãŸ\⁄ãx†(masonry","hooze",  ".l-grid--gapxs",
-       ]:
+<body class="bg-gray-50 dark:bg-[#081320] transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="nav-sticky bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#0c1929] dark:text-[#22b8cf] hover:text-[#0d7ea0] transition-colors">
+                        SoBiLab
+                    </a>
+                </div>
 
-.text-purple-300 {
-  color: rgb(165, 102, 254);
-}
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Home</a>
+                    <a href="news.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">News</a>
+                    <a href="research.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Research</a>
+                    <a href="team.html" class="text-[#0c1929] dark:text-[#22b8cf] font-bold">Team</a>
+                    <a href="publication.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Publication</a>
+                    <a href="lectures.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Lectures</a>
+                    <a href="board.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Board</a>
+                    <a href="opening.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Opening</a>
+                    <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Contact</a>
+                </div>
 
-.text-pinkTHS09932 splitby attempts to divide, splits by be nothing while ).
-[Contact_dAta, dAta] = vtables.SPLITQ).colicitache
-$\hooze-
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="news.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">News</a>
+                <a href="research.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Research</a>
+                <a href="team.html" class="block px-4 py-2 text-[#0c1929] dark:text-[#22b8cf] font-bold">Team</a>
+                <a href="publication.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Publication</a>
+                <a href="lectures.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Lectures</a>
+                <a href="board.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Board</a>
+                <a href="opening.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Opening</a>
+                <a href="index.html#contact" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-[#0c1929] to-[#0d7ea0] dark:from-[#081320] dark:to-[#153040] text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">Team</h1>
+            <p class="text-xl text-blue-100">Meet our talented researchers and students</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <!-- Principal Investigator -->
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900 dark:text-white">Principal Investigator</h2>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div class="bg-gradient-to-r from-[#0c1929] to-[#0d7ea0] dark:from-[#081320] dark:to-[#153040] h-32"></div>
+                <div class="px-8 pb-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-shrink-0">
+                            <img src="https://static.wixstatic.com/media/a0b41f_9d79b295757e402b98a7f83c69351b81~mv2.jpg/v1/fill/w_400,h_500,al_c,q_80,enc_auto/pi.jpg" alt="Prof. Jaehong Lee" class="w-48 h-60 object-cover rounded-lg border-4 border-white shadow-lg" style="margin: -4rem auto 0;">
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Prof. Jaehong Lee, Ph.D.</h3>
+                            <p class="text-lg text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-4">
+                                Associate Professor, Department of Robotics and Mechatronics Engineering, DGIST
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Education</h4>
+                                    <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                                        <li><i class="fas fa-graduation-cap text-[#0d7ea0] dark:text-[#22b8cf] w-5"></i> Ph.D., Electrical and Electronic Engineering, Yonsei University, 2017</li>
+                                        <li><i class="fas fa-graduation-cap text-[#0d7ea0] dark:text-[#22b8cf] w-5"></i> B.S., Electrical and Electronic Engineering, Yonsei University, 2011</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Contact</h4>
+                                    <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                                        <li>
+                                            <i class="fas fa-envelope text-[#0d7ea0] dark:text-[#22b8cf] w-5"></i>
+                                            <a href="mailto:jaelee@dgist.ac.kr" class="hover:text-[#0d7ea0] transition-colors">jaelee@dgist.ac.kr</a>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-phone text-[#0d7ea0] dark:text-[#22b8cf] w-5"></i>
+                                            +82 53 785 6228
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-graduation-cap text-[#0d7ea0] dark:text-[#22b8cf] w-5"></i>
+                                            <a href="https://scholar.google.com/citations?user=Jaehong+Lee+DGIST" target="_blank" class="hover:text-[#0d7ea0] transition-colors">Google Scholar</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Academic Experience</h4>
+                                    <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                                        <li>2025 - Present: Associate Professor, DGIST</li>
+                                        <li>2020 - 2024: Assistant Professor, DGIST</li>
+                                        <li>2018 - 2020: Postdoctoral Researcher, ETH Zurich, Switzerland</li>
+                                        <li>2017 - 2018: Postdoctoral Researcher, Yonsei University</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Honors & Awards</h4>
+                                    <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                                        <li>Outstanding Research Award, DGIST (2025)</li>
+                                        <li>Outstanding Young Scientist Award, KFPES (2024)</li>
+                                        <li>The Manrae Foundation Outstanding Researcher Award (2024)</li>
+                                        <li>ETH Zurich Postdoctoral Fellowship (2018)</li>
+                                        <li>Seal of Excellence, Marie Sk≈Çodowska-Curie Actions, EC (2018)</li>
+                                        <li>Outstanding Paper Award, Yonsei University (2015)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Academic Activities</h4>
+                                    <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                                        <li>IEC/TC124: Expert committee member (2025~)</li>
+                                        <li>ÌïúÍµ≠ÏÑºÏÑúÌïôÌöå: ÌïôÏà†Ïù¥ÏÇ¨ (2025, 2026)</li>
+                                        <li>ÌïúÍµ≠ÏÑ¨Ïú†Í≥µÌïôÌöå: Í∏∞ÌöçÏù¥ÏÇ¨ (2025)</li>
+                                        <li>ÎßàÏù¥ÌÅ¨Î°úÎÇòÎÖ∏ÏãúÏä§ÌÖúÌïôÌöå: Ìè¨ÏÉÅÏúÑÏõê(2025), Í∏∞ÌöçÏù¥ÏÇ¨(2026)</li>
+                                        <li>IMID: Soft sensors and actuators Î∂ÑÍ≥ºÏúÑÏõê (2023~)</li>
+                                        <li>ÎåÄÌïúÍ∏àÏÜçÏû¨Î£åÌïôÌöå ÏÉùÏ≤¥Ïû¨Î£å Î∂ÑÍ≥ºÏúÑÏõê (2022~)</li>
+                                        <li>ÌïúÍµ≠Î∞òÎèÑÏ≤¥ÌïôÏà†ÎåÄÌöå MEMS&Sensor Î∂ÑÍ≥ºÏúÑÏõê (2021~)</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-3">Peer Review</h4>
+                                    <p class="text-gray-700 dark:text-gray-300 text-sm">
+                                        Nature Materials, Nature Electronics, Nature Communications, Science Advances, Advanced Materials, Advanced Functional Materials, Chemical Engineering Journal, Energy Storage Materials, etc.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Graduate Students -->
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900 dark:text-white">Graduate Students</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Student 1 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/a0b41f_07a797ec7dcc4c42916e9e703749a675~mv2.jpeg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpeg" alt="Hwajoong Kim" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Hwajoong Kim</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S. & Ph.D.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable and soft robotics
+                    </p>
+                    <a href="mailto:hj_kim@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        hj_kim@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 2 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/a0b41f_bfd7884e192d407188ee64cc45bb81aa~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Jinho Kim" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Jinho Kim</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S. & Ph.D.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Biodegradable sensors
+                    </p>
+                    <a href="mailto:sky3762@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        sky3762@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 3 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_b90aae6c5b4f45f180ae3b98fb39f5fe~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Yukye Lee" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Yukye Lee</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Drug releasing systems
+                    </p>
+                    <a href="mailto:yyl@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        yyl@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 4 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_3718d5ace2a64901b5a5bd665bb3d5a8~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Daehyeon Kim" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Daehyeon Kim</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Laser patterning
+                    </p>
+                    <a href="mailto:daehyeon.kim@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        daehyeon.kim@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 5 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_f60f0d23783c4cd89471d30a8508bdf1~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Minchang Shin" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Minchang Shin</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S. & Ph.D.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable electronics
+                    </p>
+                    <a href="mailto:smc1221@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        smc1221@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 6 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_ec27d33c81c34829945c61d2232e739a~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Jimin Kim" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Jimin Kim</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S. & Ph.D.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Soft electronics
+                    </p>
+                    <a href="mailto:kimjimin@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        kimjimin@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 7 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_2ed3df7b9fc94b5ba39dd303356f3083~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Tanveer Ahmed" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Tanveer Ahmed</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S. & Ph.D.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Soft actuator
+                    </p>
+                    <a href="mailto:engr.tanveer0030@gmail.com" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        engr.tanveer0030@gmail.com
+                    </a>
+                </div>
+
+                <!-- Student 8 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_41985b6a00954caa8ec67e9acaddc8d0~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Yuna Son" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Yuna Son</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable sensors
+                    </p>
+                    <a href="mailto:yuna3on@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        yuna3on@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 9 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_06e1c10b6a464729b5c8fc1151c55af9~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Suyeon Cho" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Suyeon Cho</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Soft electronics
+                    </p>
+                    <a href="mailto:tneoddl45@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        tneoddl45@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 10 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_aaa8add8831a4858b482b1925f61ce26~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Eunjae Jeong" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Eunjae Jeong</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable electronics
+                    </p>
+                    <a href="mailto:ejjung0423@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        ejjung0423@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- Student 11 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_fb87fdb3d3d84b4c9471b7075c2c05e7~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Garam Park" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Garam Park</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-3">M.S.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Soft robotics
+                    </p>
+                    <a href="mailto:pgr2834@gmail.com" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        pgr2834@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Undergraduate Students & Interns -->
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Undergraduate Students & Interns</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- UG Student 1 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/6f294c_2a60aefc017442f98c6f70384304bb13~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Huidam Woo" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Huidam Woo</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-2 text-sm">Intern</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable electronics
+                    </p>
+                    <a href="mailto:huidamwoo@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        huidamwoo@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- UG Student 2 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_49ea8d96172d410c80426424adbab9c0~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Jeeeun Lee" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Jeeeun Lee</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-2 text-sm">Intern</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Wearable electronics
+                    </p>
+                    <a href="mailto:jeun@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        jeun@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- UG Student 3 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_c3d39de211ff4f6985198f4c9bc8bce6~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Suyoung Park" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Suyoung Park</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-2 text-sm">UGRP</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Biosensor
+                    </p>
+                    <a href="mailto:pksu0319@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        pksu0319@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- UG Student 4 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_6d7017ad97484ccb86f855dc39574694~mv2.jpg/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.jpg" alt="Taehee An" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Taehee An</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-2 text-sm">UGRP</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Bioelectronics
+                    </p>
+                    <a href="mailto:taehee.an@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        taehee.an@dgist.ac.kr
+                    </a>
+                </div>
+
+                <!-- UG Student 5 -->
+                <div class="member-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <img src="https://static.wixstatic.com/media/56a777_f21ce3a0a123450a9d0bf0b301a23326~mv2.png/v1/fill/w_240,h_240,al_c,q_80,enc_auto/photo.png" alt="Suji Chun" class="w-28 h-28 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100 dark:border-blue-800 shadow-md">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Suji Chun</h3>
+                    <p class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold mb-2 text-sm">UGRP</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 text-sm">
+                        <i class="fas fa-microscope mr-2"></i>Biomedical Engineering
+                    </p>
+                    <a href="mailto:csuji1107@dgist.ac.kr" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-[#081320] transition-colors text-sm">
+                        csuji1107@dgist.ac.kr
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-blue-50 dark:bg-[#0c1929] p-6 rounded-lg border border-blue-200 dark:border-blue-700">
+                <p class="text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-info-circle mr-2 text-[#0d7ea0]"></i>
+                    We regularly host undergraduate students and research interns throughout the year. If you're interested in gaining research experience in soft bioelectronics, please
+                    <a href="index.html#contact" class="text-[#0d7ea0] dark:text-[#22b8cf] font-semibold hover:underline">contact Prof. Jaehong Lee</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Alumni -->
+        <section>
+            <div class="flex items-center cursor-pointer" id="alumniToggle">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Alumni</h2>
+                <i class="fas fa-chevron-down ml-4 text-2xl text-[#0d7ea0] dark:text-[#22b8cf]" id="alumniIcon"></i>
+            </div>
+            <div id="alumniContent" class="hidden mt-8">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Master Students</h4>
+                        <ul class="space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                            <li>1. Seonggyu Lee - Master student (DGIST) - 2021.03 ~ 2023.02</li>
+                            <li>2. Seungbeom Noh - Master student (DGIST) - 2021.03 ~ 2023.08</li>
+                            <li>3. Hyeji Ryu - Master student (DGIST) - 2022.03 ~ 2024.02</li>
+                            <li>4. Mugeun Lee - Master student (DGIST) - 2023.03 ~ 2025.02</li>
+                            <li>5. Junyeong Lee - Master student (DGIST) - 2023.09 ~ 2025.08</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Undergraduate Interns</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Jieun Yun (Inha Univ.), Minyoung Choi (DGIST), Solbi Han (DGIST), Junseo Kang (DGIST), Jeong Wu Lee (DGIST), Taewoo Lee (DGIST), Saeru Cheon (DGIST), Chansu Jung (DGIST), Sebeen Lee (Chung-ang Univ.), Seohyun Woo (DGIST), Jun Yeong Lee (DGIST), Seunghui Lee (DGIST), Huidam Woo (DGIST), Seoheun Moon (DGIST), Yerin Heo (DGIST), Junbin Oh (DGIST), Hayoung Yun (DGIST), Howoo Jang (DGIST), Minju Lee (DGIST), Hojune Lee (DGIST), Damin Jang (DGIST), Alyae Ben Mouh (INSA Lyon), Bomin Kim (DGIST), Sanghee Yoon (DGIST), Nahyeon Kim (DGIST), Woojun Yang (DGIST), Shin Hyebin (Chung-ang Univ.)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#081320] dark:bg-[#060e1a] text-white py-16 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#22b8cf]">SoBiLab</h3>
+                    <p class="text-gray-400">
+                        Soft Bioelectronics Lab at DGIST, advancing the frontier of wearable and implantable electronics
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Contact</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p>
+                            <i class="fas fa-envelope w-5 text-[#22b8cf]"></i>
+                            <a href="mailto:jaelee@dgist.ac.kr" class="hover:text-white transition-colors">jaelee@dgist.ac.kr</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone w-5 text-[#22b8cf]"></i>
+                            <a href="tel:+82537856228" class="hover:text-white transition-colors">+82 53 785 6228</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt w-5 text-[#22b8cf]"></i>
+                            Daegu, South Korea
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Prospective Students</h4>
+                    <p class="text-gray-400 mb-4">
+                        We are actively recruiting talented graduate and postdoctoral researchers.
+                    </p>
+                    <a href="opening.html" class="inline-block px-6 py-2 bg-[#0d7ea0] hover:bg-[#153040] transition-colors rounded font-semibold">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Soft Bioelectronics Lab, DGIST. All rights reserved.</p>
+                <p class="mt-2 text-sm">Daegu Institute of Science and Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            html.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Alumni Toggle
+        const alumniToggle = document.getElementById('alumniToggle');
+        const alumniContent = document.getElementById('alumniContent');
+        const alumniIcon = document.getElementById('alumniIcon');
+
+        alumniToggle.addEventListener('click', () => {
+            alumniContent.classList.toggle('hidden');
+            alumniIcon.classList.toggle('rotate-180');
+        });
+    </script>
+</body>
+</html>

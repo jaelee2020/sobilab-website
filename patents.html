@@ -56,22 +56,629 @@
             color: #86efac;
         }
 
-        .status-pending{
-            background-color: #fff3cd;
-            color: #cc9900;
+        .status-pending {
+            background-color: #fed7aa;
+            color: #92400e;
         }
 
         .dark-mode .status-pending {
-            background-color: #cc6600;
-            color: #ffcc7e;
+            background-color: #7c2d12;
+            color: #fdba74;
         }
-  
-  
-   5�tyle>
+
+    </style>
 </head>
 <body class="bg-gray-50 dark:bg-[#081320] transition-colors duration-300">
-  
-    
-  
-  </body>
+    <!-- Navigation -->
+    <nav class="nav-sticky bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#0c1929] dark:text-[#22b8cf] hover:text-[#0d7ea0] transition-colors">
+                        SoBiLab
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Home</a>
+                    <a href="news.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">News</a>
+                    <a href="research.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Research</a>
+                    <a href="team.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Team</a>
+                    <a href="publication.html" class="text-[#0c1929] dark:text-[#22b8cf] font-bold">Publication</a>
+                    <a href="lectures.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Lectures</a>
+                    <a href="board.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Board</a>
+                    <a href="opening.html" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Opening</a>
+                    <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#0c1929] dark:hover:text-[#22b8cf] transition-colors font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="news.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">News</a>
+                <a href="research.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Research</a>
+                <a href="team.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Team</a>
+                <a href="publication.html" class="block px-4 py-2 text-[#0c1929] dark:text-[#22b8cf] font-bold">Publication</a>
+                <a href="lectures.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Lectures</a>
+                <a href="board.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Board</a>
+                <a href="opening.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Opening</a>
+                <a href="index.html#contact" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-[#0c1929] to-[#0d7ea0] dark:from-[#081320] dark:to-[#153040] text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">Patents</h1>
+            <p class="text-xl text-blue-100">Our intellectual property portfolio</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <!-- Back Link -->
+        <div class="mb-8">
+            <a href="publication.html" class="text-[#0d7ea0] dark:text-[#22b8cf] hover:text-[#153040] dark:hover:text-blue-300 transition-colors font-medium">
+                <i class="fas fa-arrow-left mr-2"></i>← Back to Publications
+            </a>
+        </div>
+
+        <!-- Patents Section -->
+        <section class="mb-24">
+            <h2 class="text-4xl font-bold mb-12 text-gray-900 dark:text-white">Patents (32)</h2>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+                <div class="space-y-6">
+
+                    <!-- Patent 32 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">32.</span>
+                            <span class="font-semibold">"비대칭 전극 기반 멀티모달 촉각 센서 및 이를 이용하는 멀티모달 촉각 센서 어레이"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, M. Shin, J. Kim, S. Cho
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2026-0031541 (2026.02.20)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 31 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">31.</span>
+                            <span class="font-semibold">"산화 액체금속 기반의 플렉서블 멀티모달 촉각 센서 및 이를 이용하는 멀티모달 촉각 센서 어레이"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Woo, J. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2026-0014806 (2026.01.26)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 30 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">30.</span>
+                            <span class="font-semibold">"레이저 기반 회전형 단일 섬유 가공 시스템 (LASER-BASED ROTARY SINGLE-FIBER PROCESSING SYSTEM)"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, D. Kim, M. Shin
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2026-0012508 (2026.01.22)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 29 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">29.</span>
+                            <span class="font-semibold">"전이금속 칼코게나이드 나노 물질 기반 신축성 광열 섬유, 이의 제조방법 및 이를 이용한 체내 삽입형 약물 방출 시스템"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, Y. Lee, T. Lee, K. Yoon
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2025-0109044 (2025.08.07)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 28 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">28.</span>
+                            <span class="font-semibold">"네거티브 정전식 섬유형 스트레인 센싱 시스템"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, J. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending PCT/KR2025/007825 (2025.06.09)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 27 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">27.</span>
+                            <span class="font-semibold">"봉합사형 전자약 시스템"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim, J. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2025-0070239 (2025.05.29)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 26 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">26.</span>
+                            <span class="font-semibold">"네거티브 정전식 섬유형 스트레인 센싱 시스템"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, J. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2024-0131658 (2024.09.27)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 25 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">25.</span>
+                            <span class="font-semibold">"저온-전열 구동 타입의 섬유형 액추에이터, 섬유형 액추에이터의 제조 방법 및 모니터링 시스템"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Noh
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2023-0108862 (2023.08.21)</span>
+                            <span class="status-badge status-granted">Granted 10-2915504 (2026.01.16)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 24 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">24.</span>
+                            <span class="font-semibold">"pH 센싱이 가능한 봉합사"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, M. Jeong, J. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2023-0108757 (2023.08.21)</span>
+                            <span class="status-badge status-granted">Granted 10-2903692 (2025.12.19)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 23 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">23.</span>
+                            <span class="font-semibold">"INTEGRAL SELF-MONITORING SOFT ACTUATOR AND METHOD OF SELF-MONITORING OF SOFT ACTUATOR"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending US 18/032,425 (2023.04.18)</span>
+                            <span class="status-badge status-granted">Granted 12,491,630 (2025.12.09)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 22 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">22.</span>
+                            <span class="font-semibold">"섬유형 하이드로겔 다이오드 및 그 제조방법 (Fiber-type hydrogel diode and manufacturing method thereof)"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Woo
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2023-0048327 (2023.04.12)</span>
+                            <span class="status-badge status-granted">Granted 10-2839926 (2025.07.24)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 21 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">21.</span>
+                            <span class="font-semibold">"멀티모달 센서 및 이를 구비하는 로봇 핑거 센서"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim, S. Noh, H. Kim, J. Park
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending 10-2022-0176323 (2022.12.15)</span>
+                            <span class="status-badge status-granted">Granted 10-2782587 (2025.03.12)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 20 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">20.</span>
+                            <span class="font-semibold">"Functional suture system with function of strain sensing and electrical stimulation"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2022-0059993 (2022.05.17)</span>
+                            <span class="status-badge status-granted">Granted KR 10-2703519 (2024.09.02)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 19 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">19.</span>
+                            <span class="font-semibold">"생분해성 전도성 고분자 섬유 및 이의 제조방법 (Biodegradable conductive polymer fiber and manufacturing method thereof)"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, J. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2022-0029751 (2022.03.10)</span>
+                            <span class="status-badge status-granted">Granted 10-2647334 (2024.03.08)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 18 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">18.</span>
+                            <span class="font-semibold">"일체형 자가 모니터링 소프트 액츄에이터 및 소프트 액츄에이터의 자가 모니터링 방법"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending PCT/KR2021/018849 (2021.12.13)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 17 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">17.</span>
+                            <span class="font-semibold">"Catheter exclusive sensor for monitoring fixed state of catheter and catheter monitoring system used the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2021-0139679 (2021.10.19)</span>
+                            <span class="status-badge status-granted">Granted 10-2632574 (2024.01.29)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 16 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">16.</span>
+                            <span class="font-semibold">"아스코르브산과 산소 플라즈마 처리를 이용한 전도성 섬유의 제조방법"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2020-0182086 (2020.12.23)</span>
+                            <span class="status-badge status-granted">Granted 10-2474402 (2022.12.01)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 15 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">15.</span>
+                            <span class="font-semibold">"일체형 자가 모니터링 소프트 액츄에이터 및 소프트 액츄에이터의 자가 모니터링 방법"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kim
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2020-0174747 (2020.12.14)</span>
+                            <span class="status-badge status-granted">Granted 10-2514712 (2023.03.23)</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 14 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">14.</span>
+                            <span class="font-semibold">"Waterproof conductive fiber, preparation method thereof and wearable device comprising the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, B. Choi, J. Seo, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 2018-0050628</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 13 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">13.</span>
+                            <span class="font-semibold">"Fiber-based sensors and method of manufacturing the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Shin, S. Kang, Y.J. Park, D.W. Kim, C. Pang, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2018-0006936</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 12 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">12.</span>
+                            <span class="font-semibold">"Stretchable conductive fiber and method of manufacturing the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Shin, S. Kang, B. Choi, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending US 15/729,084</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 11 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">11.</span>
+                            <span class="font-semibold">"Fiber-based multimodal sensors and method of manufacturing the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Shin, S. Kang, Y.J. Park, D.W. Kim, C. Pang, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2017-0009034</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 10 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">10.</span>
+                            <span class="font-semibold">"Stretchable conductive fiber and method of manufacturing the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, S. Shin, S. Kang, B. Choi, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2016-0131338</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 9 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">9.</span>
+                            <span class="font-semibold">"Highly sensitive pressure sensor and input device using the same"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, K. Lee, D.E. Kim, W. Shim, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending US 15/266,175</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 8 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">8.</span>
+                            <span class="font-semibold">"高灵敏度压力传感器及利用其的输入装置"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, K. Lee, D.E. Kim, W. Shim, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending CN 201610825173.6</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 7 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">7.</span>
+                            <span class="font-semibold">"3D INPUT DEVICE USING HIGHLY SENSITIVE PRESSURE SENSOR"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, K. Lee, D.E. Kim, W. Shim, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2016-0106845</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 6 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">6.</span>
+                            <span class="font-semibold">"Input device using highly sensitive pressure sensor"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, K. Lee, W. Shim, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2015-0179011</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 5 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">5.</span>
+                            <span class="font-semibold">"Highly sensitive pressure sensor and manufacturing method thereof"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, K. Lee, W. Shim, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2015-0132469</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 4 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">4.</span>
+                            <span class="font-semibold">"Conductive nanofiber and method for producing the same, and the conductive nano fiber based pressure sensor"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kwon, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2015-0092444</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 3 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">3.</span>
+                            <span class="font-semibold">"Conductive yarn, conductive yarn based pressure sensor and methods for producing them"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kwon, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending US 14/926,230</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 2 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">2.</span>
+                            <span class="font-semibold">"Conductive nano fiber and method for producing the same, and the conductive nano fiber based pressure sensor"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kwon, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-pending">Pending KR 10-2015-0148582</span>
+                        </div>
+                    </div>
+
+                    <!-- Patent 1 -->
+                    <div class="patent-item">
+                        <p class="text-gray-900 dark:text-white mb-2">
+                            <span class="font-bold text-[#0c1929] dark:text-[#22b8cf]">1.</span>
+                            <span class="font-semibold">"Conductive nano fiber and method for producing the same, and the conductive nano fiber based pressure sensor"</span>
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 ml-6 mb-2">
+                            J. Lee, H. Kwon, T. Lee
+                        </p>
+                        <div class="ml-6">
+                            <span class="status-badge status-granted">Granted KR 10-1541461</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#081320] dark:bg-[#060e1a] text-white py-16 px-4 sm:px-6 lg:px-8 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#22b8cf]">SoBiLab</h3>
+                    <p class="text-gray-400">
+                        Soft Bioelectronics Lab at DGIST, advancing the frontier of wearable and implantable electronics
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Contact</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p>
+                            <i class="fas fa-envelope w-5 text-[#22b8cf]"></i>
+                            <a href="mailto:jaelee@dgist.ac.kr" class="hover:text-white transition-colors">jaelee@dgist.ac.kr</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone w-5 text-[#22b8cf]"></i>
+                            <a href="tel:+82537856228" class="hover:text-white transition-colors">+82 53 785 6228</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt w-5 text-[#22b8cf]"></i>
+                            Daegu, South Korea
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#22b8cf]">Prospective Students</h4>
+                    <p class="text-gray-400 mb-4">
+                        We are actively recruiting talented graduate and postdoctoral researchers.
+                    </p>
+                    <a href="opening.html" class="inline-block px-6 py-2 bg-[#0d7ea0] hover:bg-[#153040] transition-colors rounded font-semibold">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Soft Bioelectronics Lab, DGIST. All rights reserved.</p>
+                <p class="mt-2 text-sm">Daegu Institute of Science and Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            html.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+    </script>
+</body>
 </html>
