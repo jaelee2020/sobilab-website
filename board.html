@@ -185,9 +185,9 @@
                     <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#0d7ea0] dark:hover:text-[#22b8cf] transition-colors font-medium">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                        <i class="fas fa-moon"></i>
-                    </button>
+                    <a href="https://www.dgist.ac.kr" target="_blank" rel="noopener" class="hidden md:block">
+                        <img src="images/DGIST_1.png" alt="DGIST" style="height:14px" class="object-contain">
+                    </a>
                     <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -384,21 +384,6 @@
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Dark Mode
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const htmlEl = document.documentElement;
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (isDarkMode) {
-        htmlEl.classList.add('dark');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-    darkModeToggle.addEventListener('click', () => {
-        htmlEl.classList.toggle('dark');
-        const isDark = htmlEl.classList.contains('dark');
-        localStorage.setItem('darkMode', isDark);
-        darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
 
     // Mobile Menu
